@@ -21,7 +21,7 @@ Data: 2026-10-13. App de referência: Blackmagic Camera for Android 3.5
 | Data | Arquivo | SHA-256 | Resultado REA |
 |---|---|---|---|
 | 2026-10-13 | `uptodown-com.blackmagicdesign.android.blackmagiccam.apk` (14,8 MB) | `dc885921…b342550` | **Não é o app alvo.** `decode_android_resources`: pacote `com.uptodown` 7.41 (instalador da loja Uptodown), assinado por *Uptodown Technologies SL*. `search_android_classes "blackmagic"`: 0 de 13.961 classes; nenhum APK embutido. Descartado |
-| 2026-10-13 | `blackmagic-camera.apk` (19,1 MB) | `188bbdb8…13acdb8`[^1] | **Não é o app alvo.** `inspect_android_package`: pacote `cm.aptoide.pt` 9.22.5.3 (instalador da loja Aptoide), certificado sem organização (`ST=Portugal`). 0 ocorrências de "blackmagic" nos 3 DEX. Descartado |
+| 2026-10-13 | `blackmagic-camera.apk` (19,1 MB) | `188bbdb8…cfd4374`[^1] | **Não é o app alvo.** `inspect_android_package`: pacote `cm.aptoide.pt` 9.22.5.3 (instalador da loja Aptoide), certificado sem organização (`ST=Portugal`). 0 ocorrências de "blackmagic" nos 3 DEX. Descartado |
 
 Requisitos para o próximo arquivo: pacote `com.blackmagicdesign.android.blackmagiccam`; se vier
 do Play (split APKs), trazer `base.apk` e todos os `split_*.apk`. O `.apkm` do APKMirror (`3.5.0.0064`) é o formato esperado.
