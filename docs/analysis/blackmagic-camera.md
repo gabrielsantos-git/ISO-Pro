@@ -17,6 +17,14 @@ Data: 2026-10-13. App de referência: Blackmagic Camera for Android 3.5
 | Site oficial / tech specs da Blackmagic | Só trechos indexados. O ambiente bloqueia o acesso direto |
 | Análise binária do APK com REA | **Não feita.** O ambiente bloqueia Play Store e espelhos de APK; os motores do REA (apktool + jadx) estão instalados e validados |
 
+### Registro de tentativas de análise binária
+| Data | Arquivo | SHA-256 | Resultado REA |
+|---|---|---|---|
+| 2026-10-13 | `uptodown-com.blackmagicdesign.android.blackmagiccam.apk` (14,8 MB) | `dc885921…b342550` | **Não é o app alvo.** `decode_android_resources`: pacote `com.uptodown` 7.41 (instalador da loja Uptodown), assinado por *Uptodown Technologies SL*. `search_android_classes "blackmagic"`: 0 de 13.961 classes; nenhum APK embutido. Descartado |
+
+Requisitos para o próximo arquivo: pacote `com.blackmagicdesign.android.blackmagiccam`; se vier
+do Play (split APKs), trazer `base.apk` e todos os `split_*.apk`.
+
 Cada linha abaixo tem um nível de confiança: **C** = confirmado por fonte oficial
 ou várias fontes, **P** = provável (uma fonte, ou só iOS), **?** = não confirmado.
 
