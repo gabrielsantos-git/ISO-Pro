@@ -1,0 +1,15 @@
+# Third-party binaries under analysis and REA outputs stay local.
+# Never commit proprietary APKs/IPAs, decompiled code or extracted assets.
+/targets/
+/analysis/raw/
+*.apk
+*.apks
+*.xapk
+*.aab
+*.ipa
+*.dex
+
+# Tooling
+node_modules/
+.DS_Store
+.claude/settings.local.json
