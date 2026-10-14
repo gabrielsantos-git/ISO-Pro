@@ -1,6 +1,6 @@
 # Blackmagic Camera — análise de funcionalidades e plano do ISO-Pro
 
-Status: **fase 1 concluída (fontes públicas)**, **fase 2 concluída para o código Java/Kotlin (REA)**, bibliotecas nativas pendentes (seção 6.6).
+Status: **fase 1 concluída (fontes públicas)**, **fase 2 concluída para o código Java/Kotlin (REA)**, bibliotecas nativas fora de escopo (seção 6.6).
 Data: 2026-10-13 (fase 1), 2026-10-14 (fase 2). App de referência: Blackmagic Camera for Android 3.5
 (`com.blackmagicdesign.android.blackmagiccam`) e a versão iOS como comparação.
 
@@ -279,6 +279,8 @@ Cliente nativo (`bmddavcloudclient`): login OAuth, organizações, projetos, arm
 Formatos e resoluções exatos por aparelho, como o Blackmagic Log é calculado, o
 pipeline de encode (MediaCodec via NDK?) e a implementação do preview. Para isso é preciso o
 `split_config.arm64_v8a.apk`, que vem dentro do `.apkm`.
+
+**Decisão (2026-10-14):** não será buscado. O arquivo não passa pelo limite de upload da sessão, e esses detalhes não mudam nenhuma decisão do plano: o ISO-Pro implementa o próprio pipeline e a própria curva log. Se for preciso no futuro, o caminho é `adb pull` do split instalado no celular.
 
 ---
 
