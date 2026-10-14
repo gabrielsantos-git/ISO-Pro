@@ -308,7 +308,25 @@ pipeline de encode (MediaCodec via NDK?) e a implementação do preview. Para is
   Ktor (Apache-2.0), Netty (Apache-2.0), JmDNS (Apache-2.0), JCodec (BSD-2),
   GStreamer (LGPL, cuidado com linkagem), libusb (LGPL), libjpeg-turbo (BSD).
 
-### 7.2 Fases revisadas
+### 7.2 Estratégia de log por nível de aparelho
+O app escolhe sozinho, ao abrir, o melhor nível que o aparelho suporta. Não há lista
+de modelos.
+
+| Nível | Técnica | Requisito detectado em runtime | Nome na UI |
+|---|---|---|---|
+| 1 | Log do fabricante (ex.: Samsung Log nos Galaxy S/Z) | chave/extensão do fabricante disponível | Log |
+| 2 | Curva ISO-Pro Log no ISP (`TONEMAP_MODE_CONTRAST_CURVE`) | `MANUAL_POST_PROCESSING` + `DYNAMIC_RANGE_TEN_BIT` + HEVC Main10 | Log |
+| 3 | HLG10 → linear → ISO-Pro Log na GPU | perfil `HLG10` em `DynamicRangeProfiles` | Log |
+| 4 | Curva suave, nitidez e NR mínimos, em 8 bits | qualquer aparelho | **Flat** (nunca "Log": em 8 bits gera banding) |
+
+Regras comuns: uma única curva ISO-Pro Log com especificação aberta e LUT para
+Rec.709 publicada; LUT de monitor ligada por padrão; false color e zebra calibrados
+para log; `EDGE_MODE` e NR no mínimo; AE/AWB travados durante a gravação; HEVC 10 bits
+a 80–120 Mbps em 4K30. Intermediários como o Galaxy A57 (sem log do fabricante segundo
+fontes públicas, 10 bits e `MANUAL_POST_PROCESSING` não confirmados) ficam no nível 2,
+3 ou 4, conforme o que a detecção encontrar.
+
+### 7.3 Fases revisadas
 | Fase | Mudanças |
 |---|---|
 | 1 — MVP | Pipeline nativo (NDK) desde o início; HEVC 10-bit + **APV** onde houver suporte; WB em Kelvin/tint e prioridade de AE pelas APIs do Android 16 com fallback |
